@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="DJoz Template">
+    <meta name="keywords" content="DJoz, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DJoz | Template</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="css/barfiller.css" type="text/css">
+    <link rel="stylesheet" href="css/nowfont.css" type="text/css">
+    <link rel="stylesheet" href="css/rockville.css" type="text/css">
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-2">
+                    <div class="header__logo">
+                        <a href="?"><img src="img/logo_jasso.png" style="width: 45px;" alt=""></a>
+                    </div>
+                </div>
+                <!-- <div class="col-lg-10 col-md-10">
+                    <div class="header__nav">
+                        <nav class="header__menu mobile-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./about.html">About</a></li>
+                                <li><a href="./discography.html">Discography</a></li>
+                                <li><a href="./tours.html">Tours</a></li>
+                                <li><a href="./videos.html">Videos</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="./about.html">About</a></li>
+                                        <li><a href="./blog.html">Blog</a></li>
+                                        <li><a href="./blog-details.html">Blog Details</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="./contact.html">Contact</a></li>
+                            </ul>
+                        </nav>
+                        <div class="header__right__social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div id="mobile-menu-wrap"></div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Hero Section Begin -->
+    <section class="hero spad set-bg" data-setbg="img/fondo.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hero__text">
+                        <!-- <span>New single</span> -->
+                        <h1>Jasso</h1>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br />tempor
+                            incididunt ut labore et dolore magna aliqua.</p>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="linear__icon">
+            <i class="fa fa-angle-double-down"></i>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Event Section Begin -->
+    <section class="event">
+        <div class="container">
+            <h3 id="categoria"
+                style="size: 11px; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-weight: bold;">
+            </h3>
+
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="section-title">
+                        <p id="nombrePublicacion"
+                            style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;font-weight: bold;">
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="event">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h2>Fotografías</h2>
+                    </div>
+                </div>
+            </div>
+            <div id="fotosPublicacion" class="owl-carousel">
+
+            </div>
+        </div>
+    </section>
+    <!-- Event Section Begin -->
+    <section class="event">
+        <div class="container">
+            <p id="descripcion" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="anticipo" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="cantidadPersonas" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="costoFirma" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="direcccion" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="validoHasta" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="valorAgregado" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="lugar" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="precio" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+            <p id="tipoEventos" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+        </div>
+    </section>
+
+    <!-- Event Section End -->
+    <!--  <div class="col-lg-4">
+                        <div class="event__item">
+                            <div class="event__item__pic set-bg" data-setbg="img/jasso3.jpg">
+                                <div class="tag-date">
+                                    <span>Dec 15, 2019</span>
+                                </div>
+                            </div>
+                            <div class="event__item__text">
+                                <h4>David Guetta Miami Ultra</h4>
+                                <p><i class="fa fa-map-marker"></i> Funkhaus Berlin, Berlin, Germany</p>
+                            </div>
+                        </div>
+                    </div> -->
+    <!-- About Section Begin -->
+    <section class="about spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about__pic">
+                        <img src="img/about/about.png" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about__text">
+                        <div class="section-title">
+                            <h2>¿Que es Jasso?</h2>
+                            <h1>Nosotros</h1>
+                        </div>
+                        <p style="text-align:justify ;">Somos una empresa multifacética especializada en el desarrollo y coordinación 
+                            de una amplia gama de actividades, eventos, bufetes y todo tipo de fiestas. 
+                            Con una experiencia de 10 años en el mercado, hemos trabajado con más de 100 clientes y hemos llevado a cabo exitosamente más de 200 eventos. Nuestra dedicación y compromiso nos han permitido establecernos como líderes en el sector, brindando soluciones personalizadas y experiencias memorables para nuestros clientes..</p>
+                        <a href="#" class="primary-btn">CONTÁCTAME</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section End -->
+
+    <!-- Services Section Begin -->
+    <section class="services">
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-lg-12 p-0 ">
+                    <div class="service__item deep-bg">                       
+                        <h4>Expertos en crear experiencias inolvidables</h4>                      
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="services__left set-bg" data-setbg="img/jasso2.jpg">
+                        <a href="https://www.youtube.com/watch?v=JGwWNGJdvx8" class="play-btn video-popup"><i
+                                class="fa fa-play"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 p-0">
+                   
+                    <div class="row services__list">
+                        <div class="col-lg-12 p-0 order-lg-1">
+                            <div class="service__item deep-bg">                       
+                                <h4>Expertos en crear experiencias inolvidables</h4>                      
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-1 col-md-6 order-md-1">
+                            <div class="service__item deep-bg">
+                                <img src="img/services/service-1.png" alt="">
+                                <h4>Bodas</h4>
+                                <p>Bodas de ensueño: Tu día perfecto, hecho realidad.
+                                    Planificación de bodas sin estrés.</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-2 col-md-6 order-md-2">
+                            <div class="service__item">
+                                <img src="img/services/service-2.png" alt="">
+                                <h4>Salones de eventos</h4>
+                                <p>Elegancia y versatilidad: Un espacio adaptable a cualquier tipo de evento..</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-4 col-md-6 order-md-4">
+                            <div class="service__item deep-bg">
+                                <img src="img/services/service-4.png" alt="">
+                                <h4>Grupos musicales</h4>
+                                <p>El ritmo perfecto para tu evento: Ofrece una experiencia musical personalizada.
+                                    Más que música, una pasión compartida..</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 p-0 order-lg-3 col-md-6 order-md-3">
+                            <div class="service__item">
+                                <img src="img/services/service-3.png" alt="">
+                                <h4>Integraciones y fiestas</h4>
+                                <p>Contamos con un equipo de profesionales altamente cualificados y con años de experiencia en la organización de eventos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section End -->
+
+    <!-- Track Section Begin -->
+    <section class="track spad">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-5">
+                    <div class="track__all">
+                        <a href="#" class="primary-btn border-btn">Consultar mas servicios</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5 p-0">
+                <div class="track__pic">
+                    <img src="img/jasso2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- Track Section End -->
+
+
+    <!-- Youtube Section End -->
+
+    <!-- Countdown Section Begin -->
+    <section class="countdown spad set-bg" data-setbg="img/jasso12.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="countdown__text">
+                        <h1>Jasso</h1>
+                        <h4>Tiempo de oferta</h4>
+                    </div>
+                    <div class="countdown__timer" id="countdown-time">
+                        <div class="countdown__item">
+                            <span>20</span>
+                            <p>days</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>45</span>
+                            <p>hours</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>18</span>
+                            <p>minutes</p>
+                        </div>
+                        <div class="countdown__item">
+                            <span>09</span>
+                            <p>seconds</p>
+                        </div>
+                    </div>
+                    <div class="buy__tickets">
+                        <a href="#" class="primary-btn">Buy tickets</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Countdown Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer spad set-bg" data-setbg="img/footer-bg.png">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer__address">
+                        <ul>
+                            <li>
+                                <i class="fa fa-phone"></i>
+                                <p>Phone</p>
+                                <h6>1-677-124-44227</h6>
+                            </li>
+                            <li>
+                                <i class="fa fa-envelope"></i>
+                                <p>Email</p>
+                                <h6>DJ.Music@gmail.com</h6>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 offset-lg-1 col-md-6">
+                    <div class="footer__social">
+                        <h2>Jasso</h2>
+                        <div class="footer__social__links">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 offset-lg-1 col-md-6">
+                    <div class="footer__newslatter">
+                        <h4>Contáctame</h4>
+                        <form action="#">
+                            <input type="text" placeholder="Email">
+                            <button type="submit"><i class="fa fa-send-o"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            <div class="footer__copyright__text">
+                <p>Copyright &copy;
+                 All rights reserved | by <a href="https://colorlib.com"
+                        target="_blank">JASSO</a>
+                </p>
+            </div>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+        </div>
+    </footer>
+    <a id="whatsappLink" href="?" class="whatsapp" target="_blank">
+        <i class="fa fa-whatsapp whatsapp-icon"></i>
+      </a>
+        <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/jquery.barfiller.js"></script>
+    <script src="js/jquery.countdown.min.js"></script>
+    <script src="js/jquery.slicknav.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="./jsProject/alimento.js"></script>
+    <!-- Music Plugin -->
+    <!-- <script src="js/jquery.jplayer.min.js"></script> -->
+    <script src="js/jplayerInit.js"></script>
+</body>
+
+</html>
