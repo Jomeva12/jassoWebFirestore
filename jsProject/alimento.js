@@ -50,7 +50,7 @@ function mostrarResultado(data) {
   $("#nombrePublicacion").html(datosDocumento.nombre)
   $("#categoria").html(datosDocumento.categoria)
   $("#descripcion").html(datosDocumento.descripcion)
-
+  $("#telefono").html(datosDocumento.celularContacto)
   $("#anticipo").html(datosDocumento.anticipo)
   $("#cantidadPersonas").html(datosDocumento.cantidadDePersonas)
   $("#costoFirma").html(datosDocumento.costoParaFirmar)

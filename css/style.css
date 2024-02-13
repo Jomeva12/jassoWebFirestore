@@ -75,7 +75,7 @@ h2 {
 }
 
 h3 {
-	font-size: 30px;
+	font-size: 36px;
 }
 
 h4 {
@@ -2631,6 +2631,24 @@ ol {
 	margin-bottom: 34px;
 }
 
+.fotosPublicacion{}
+.owl-carousel .card{
+	background-color: rgb(255, 255, 255);
+	margin-bottom: 2vh;
+	border: 0 solid white;
+}
+.owl-carousel .card .card-body {
+	margin: 0px;
+}
+.owl-carousel .card .card-body img{
+	margin: 0px;
+	border-radius: 8px;
+	box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;
+}
+#categoria{
+	color: #111111;
+	font-weight: 900;
+}
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 
 @media only screen and (min-width: 1200px) {

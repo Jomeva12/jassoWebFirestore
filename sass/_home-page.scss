@@ -3,7 +3,6 @@
 -----------------------*/
 .event {
   padding-bottom: 60px;
-
   .section-title {
     margin-bottom: 10px;
     position: relative;
@@ -28,12 +27,12 @@
   }
 
   &.owl-carousel {
-
+    
     .owl-stage-outer {
       padding-top: 30px;
       padding-bottom: 40px;
     }
-
+    
     .owl-nav {
       position: absolute;
       right: 15px;
