@@ -1,6 +1,7 @@
 
 /*--------------------------------- Responsive Media Quaries -----------------------------*/
 @media only screen and (min-width: 1200px) {
+  
     .container {
       max-width: 1170px;
     }
@@ -8,6 +9,19 @@
   
   /* Medium Device = 1200px */
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    .linear__icon {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -16px;
+      -webkit-animation: mymove 0.5s infinite alternate;
+      animation: mymove 0.5s infinite alternate;
+    }
+    
+    .linear__icon i {
+      font-size: 50px;
+      color: #1E293B;
+    }
     .header__menu ul li {
       margin-right: 18px;
     }
@@ -33,6 +47,19 @@
   
   /* Tablet Device = 768px */
   @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .linear__icon {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -16px;
+      -webkit-animation: mymove 0.5s infinite alternate;
+      animation: mymove 0.5s infinite alternate;
+    }
+    
+    .linear__icon i {
+      font-size: 50px;
+      color: #1E293B;
+    }
     .header__right__social {
       display: none;
     }
@@ -111,7 +138,19 @@
   
   /* Wide Mobile = 480px */
   @media only screen and (max-width: 767px) {
-  
+    .linear__icon {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -16px;
+      -webkit-animation: mymove 0.5s infinite alternate;
+      animation: mymove 0.5s infinite alternate;
+    }
+    
+    .linear__icon i {
+      font-size: 50px;
+      color: #1E293B;
+    }
     .hero {
       padding-top: 190px;
       padding-bottom: 200px;
@@ -304,6 +343,19 @@
   
   /* Small Device = 320px */
   @media only screen and (max-width: 479px) {
+    .linear__icon {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -16px;
+      -webkit-animation: mymove 0.5s infinite alternate;
+      animation: mymove 0.5s infinite alternate;
+    }
+    
+    .linear__icon i {
+      font-size: 50px;
+      color: #1E293B;
+    }
     .section-title h1 {
       top: -40px;
       font-size: 79px;
