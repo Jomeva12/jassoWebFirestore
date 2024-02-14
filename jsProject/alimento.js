@@ -11,28 +11,74 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
-
+var nombrePublicacion=""
 $(function () {
 
-  const urlParams = new URLSearchParams(window.location.search);
-  const idColeccion = urlParams.get("id");
-  const idAsesor = urlParams.get("asesor");
-  console.log("idColeccion "+idColeccion)
-  console.log("idAsesor "+ idAsesor)
+
+  const queryString = window.location.search;
+
+  const params = new URLSearchParams(queryString);
+  const idAsesor = queryString.split("?asesor=")[1];
+  const idMatch = queryString.match(/[\?&]id=([^&?]*)/);
+  const idColeccion = idMatch ? idMatch[1] : null;
+  //const idColeccion = params.get("id");
+
+  
+  
+  
+console.log("idColeccion: ", idColeccion);
+console.log("idAsesor: ", idAsesor);
+
+
+
   obtenerDocumento(idColeccion);
+  obtenerAsesor(idAsesor)
   $("#fotosPublicacion").owlCarousel();
-  var nuevoNumero = "573012290466";
-  // Modifica el atributo href del enlace
-  $("#whatsappLink").attr("href", "https://wa.me/" + nuevoNumero + "?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20promoción");
+
+
+  
 })
 // Función para obtener un documento por ID
 function obtenerDocumento(id) {
   const docRef = db.collection("publicaciones").doc(id);
 
   docRef.get().then((doc) => {
+
+
     if (doc.exists) {
       const data = doc;
-      mostrarResultado(data);
+      this.nombrePublicacion=data.data().nombre
+          mostrarResultado(data);
+    
+    } else {
+      console.log("Documento no encontrado");
+    }
+  });
+}
+function obtenerAsesor(idAsesor) {
+  const docRef = db.collection("usuarios").doc(idAsesor);
+
+  docRef.get().then((doc) => {
+
+   
+    if (doc.exists) {
+ 
+      console.log("this.nombrePublicacion", this.nombrePublicacion.toString());
+      const data = doc.data();
+      const nombreAsesor = data.name; // Ajusta esto según la estructura de tu documento
+      const telefonoAsesor = data.phone
+      const mensajeWhatsapp =
+      `Hola ${nombreAsesor}, me gustaría cotizar la promoción de *${this.nombrePublicacion}*.\n ¡Gracias!`;
+      const urlWhatsapp =
+      "https://wa.me/" +
+      telefonoAsesor +
+      "?text=" +
+      encodeURIComponent(mensajeWhatsapp);
+
+    $("#whatsappLink").attr("href", urlWhatsapp);
+    console.log("Nombre del asesor:", nombreAsesor);
+    console.log("Número de teléfono del asesor:", telefonoAsesor);
+   // $("#whatsappLink").attr("href", "https://wa.me/" + nuevoNumero + "?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20promoción");
     
     } else {
       console.log("Documento no encontrado");
@@ -40,13 +86,13 @@ function obtenerDocumento(id) {
   });
 }
 
-
 function mostrarResultado(data) {
   // Obtener el objeto con los datos del documento
   const datosDocumento = data.data();
   if (datosDocumento.multimediaUrl) {
    mostrarImagenes(datosDocumento.multimediaUrl);
   }
+
   $("#nombrePublicacion").html(datosDocumento.nombre)
   $("#categoria").html(datosDocumento.categoria)
   $("#descripcion").html(datosDocumento.descripcion)
@@ -60,20 +106,7 @@ function mostrarResultado(data) {
   $("#lugar").html(datosDocumento.lugar)
   $("#precio").html(datosDocumento.precio)
   $("#tipoEventos").html(datosDocumento.tipoEvento)
- 
-
-
-
-
-  // Recorrer las propiedades del objeto con los datos
-  for (const propiedad in datosDocumento) {
-    // Obtener el valor de la propiedad actual
-    const valor = datosDocumento[propiedad];
-
-    // Mostrar el nombre de la propiedad y su valor
- console.log(`${propiedad}`);
- 
-  }
+  
 }
 
 function mostrarImagenes(valor){
