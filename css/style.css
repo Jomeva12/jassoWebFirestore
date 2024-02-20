@@ -2787,6 +2787,7 @@ ol {
 	.hero {
 		padding-top: 190px;
 		padding-bottom: 200px;
+		filter: grayscale(80%);
 	}
 	.event .section-title:after {
 		display: none;
