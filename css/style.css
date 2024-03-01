@@ -30,6 +30,29 @@
 
 /* Template default CSS
 /*----------------------------------------*/
+
+#logonav{
+	width: 200px;
+	animation: cambiarImagen 5s infinite;
+}
+
+@keyframes cambiarImagen {
+    0% {
+        opacity: 1; /* Opacidad inicial */
+    }
+    25% {
+        opacity: 0; /* Opacidad al 25%, la imagen desaparece */
+    }
+    50% {
+        opacity: 1; /* Opacidad al 50%, la imagen vuelve a aparecer */
+    }
+    75% {
+        opacity: 0; /* Opacidad al 75%, la imagen desaparece */
+    }
+    100% {
+        opacity: 1; /* Opacidad al 100%, la imagen vuelve a aparecer */
+    }
+}
 .whatsapp {
 	position:fixed;
 	width:60px;
@@ -2787,7 +2810,7 @@ ol {
 	.hero {
 		padding-top: 190px;
 		padding-bottom: 200px;
-		filter: grayscale(80%);
+		
 	}
 	.event .section-title:after {
 		display: none;
