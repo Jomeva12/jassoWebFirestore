@@ -31,28 +31,63 @@
 /* Template default CSS
 /*----------------------------------------*/
 
-#logonav{
-	width: 200px;
-	animation: cambiarImagen 5s infinite;
+#logonav {
+    /* width: 220px;
+    height: 40px; 
+	background-repeat: no-repeat;
+    background-size: cover; 
+    animation: cambiarImagen 20s infinite; 
+	background-image: url("../img/JassoCompany.png");
+	margin: 0; */
+
 }
 
 @keyframes cambiarImagen {
     0% {
-        opacity: 1; /* Opacidad inicial */
+        opacity: 1; 
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany.png");
     }
-    25% {
-        opacity: 0; /* Opacidad al 25%, la imagen desaparece */
+    14.28% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (1).png");
     }
-    50% {
-        opacity: 1; /* Opacidad al 50%, la imagen vuelve a aparecer */
+    28.57% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (2).png");
     }
-    75% {
-        opacity: 0; /* Opacidad al 75%, la imagen desaparece */
+    42.85% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (3).png");
+    }
+    57.14% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (4).png");
+    }
+    71.42% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (5).png");
+    }
+    85.71% {
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (6).png");
     }
     100% {
-        opacity: 1; /* Opacidad al 100%, la imagen vuelve a aparecer */
+        opacity: 1;
+		background-size: 220px 40px;
+        background-image: url("../img/JassoCompany (7).png");
     }
 }
+.countdown{
+	padding-bottom: 0px;
+}
+
 .whatsapp {
 	position:fixed;
 	width:60px;
@@ -73,7 +108,7 @@
 html,
 body {
 	height: 100%;
-	font-family: "Now Regular";
+	font-family: "Urbanist", sans-serif;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -86,7 +121,7 @@ h6 {
 	margin: 0;
 	color: #111111;
 	font-weight: 400;
-	font-family: "Rajdhani", sans-serif;
+	font-family: "Urbanist", sans-serif;
 }
 
 h1 {
@@ -170,7 +205,7 @@ ol {
 .section-title h1 {
 	font-size: 100px;
 	color: #f2f2f2;
-	font-family: "Rockville Solid Regular";
+	font-family: "Urbanist", sans-serif;
 	position: absolute;
 	left: 0;
 	top: -45px;
@@ -916,14 +951,14 @@ ol {
 .countdown__text h1 {
 	font-size: 90px;
 	color: #ffffff;
-	font-family: "Rockville Solid Regular";
+	font-family: "Urbanist", sans-serif;
 	color: #ffffff;
 	margin-bottom: 25px;
 }
 
 .countdown__text h4 {
 	font-size: 26px;
-	font-family: "Now Regular";
+	font-family: "Urbanist", sans-serif;
 	color: #ffffff;
 	text-transform: uppercase;
 	letter-spacing: 4px;
@@ -946,7 +981,7 @@ ol {
 
 .countdown__item span {
 	font-size: 90px;
-	font-family: "Rajdhani", sans-serif;
+	font-family: "Urbanist", sans-serif;
 	font-weight: 700;
 	color: #ffffff;
 	display: block;
@@ -2786,7 +2821,7 @@ ol {
 		padding-bottom: 776px;
 	}
 	.footer {
-		margin-top: -740px;
+		margin-top: -710px;
 		background-position: top 0 left 19%;
 	}
 }
@@ -2794,6 +2829,10 @@ ol {
 /* Wide Mobile = 480px */
 
 @media only screen and (max-width: 767px) {
+	#logonav{
+		width: 100px;
+	}
+	
 	.linear__icon {
 		position: absolute;
 		left: 50%;
@@ -2949,7 +2988,7 @@ ol {
 		padding-bottom: 940px;
 	}
 	.footer {
-		margin-top: -940px;
+		margin-top: -880px;
 		background-position: top 0 left 19%;
 	}
 }
@@ -2957,6 +2996,10 @@ ol {
 /* Small Device = 320px */
 
 @media only screen and (max-width: 479px) {
+	#logonav{
+		width: 100px;
+	}
+
 	.linear__icon {
 		position: absolute;
 		left: 50%;
@@ -3038,7 +3081,7 @@ ol {
 		padding-bottom: 980px;
 	}
 	.footer {
-		margin-top: -970px;
+		margin-top: -880px;
 		background-position: top 0 left 19%;
 	}
 }

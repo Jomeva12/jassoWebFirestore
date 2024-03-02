@@ -13,56 +13,38 @@ firebase.initializeApp(firebaseConfig);
 var db = firebase.firestore();
 var nombrePublicacion=""
 $(function () {
-
-
   const queryString = window.location.search;
-
   const params = new URLSearchParams(queryString);
   const idAsesor = queryString.split("?asesor=")[1];
   const idMatch = queryString.match(/[\?&]id=([^&?]*)/);
   const idColeccion = idMatch ? idMatch[1] : null;
   //const idColeccion = params.get("id");
 
-  
-  
-  
-console.log("idColeccion: ", idColeccion);
-console.log("idAsesor: ", idAsesor);
-
-
+  console.log("idColeccion: ", idColeccion);
+  console.log("idAsesor: ", idAsesor);
 
   obtenerDocumento(idColeccion);
   obtenerAsesor(idAsesor)
-  $("#fotosPublicacion").owlCarousel();
-
-
-  
+  $("#fotosPublicacion").owlCarousel();  
 })
 // Función para obtener un documento por ID
 function obtenerDocumento(id) {
   const docRef = db.collection("publicaciones").doc(id);
-
   docRef.get().then((doc) => {
-
-
     if (doc.exists) {
       const data = doc;
       this.nombrePublicacion=data.data().nombre
           mostrarResultado(data);
-    
     } else {
       console.log("Documento no encontrado");
     }
   });
 }
+
 function obtenerAsesor(idAsesor) {
   const docRef = db.collection("usuarios").doc(idAsesor);
-
   docRef.get().then((doc) => {
-
-   
     if (doc.exists) {
- 
       console.log("this.nombrePublicacion", this.nombrePublicacion.toString());
       const data = doc.data();
       const nombreAsesor = data.name; // Ajusta esto según la estructura de tu documento
@@ -78,8 +60,8 @@ function obtenerAsesor(idAsesor) {
     $("#whatsappLink").attr("href", urlWhatsapp);
     console.log("Nombre del asesor:", nombreAsesor);
     console.log("Número de teléfono del asesor:", telefonoAsesor);
-   // $("#whatsappLink").attr("href", "https://wa.me/" + nuevoNumero + "?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20promoción");
-    
+    // $("#whatsappLink").attr("href", "https://wa.me/" + nuevoNumero + "?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20promoción");
+
     } else {
       console.log("Documento no encontrado");
     }
@@ -97,15 +79,56 @@ function mostrarResultado(data) {
   $("#categoria").html(datosDocumento.categoria)
   $("#descripcion").html(datosDocumento.descripcion)
   $("#telefono").html(datosDocumento.celularContacto)
-  $("#anticipo").html(datosDocumento.anticipo)
-  $("#cantidadPersonas").html(datosDocumento.cantidadDePersonas)
-  $("#costoFirma").html(datosDocumento.costoParaFirmar)
-  $("#direcccion").html(datosDocumento.direccion)
-  $("#validoHasta").html(datosDocumento.fechaPromocionFinal)
+  $("#direcccion").html(datosDocumento.lugarDelEventoMapa)
   $("#valorAgregado").html(datosDocumento.valorAgregado)
-  $("#lugar").html(datosDocumento.lugar)
-  $("#precio").html(datosDocumento.precio)
   $("#tipoEventos").html(datosDocumento.tipoEvento)
+  $("#lugar").html(datosDocumento.lugar)
+  $("#Categoria").html(datosDocumento.categoria)
+  
+  //$("#validoHasta").html(datosDocumento.fechaVigencia)
+  var validoHastaElement = document.getElementById("validoHasta");
+  var fechaVigencia = datosDocumento.fechaVigencia;
+  var fecha = new Date(fechaVigencia);
+  var fechaFormateada = fecha.toLocaleDateString();
+  validoHastaElement.innerHTML = fechaFormateada;
+  
+  var fechaDelEventoElement = document.getElementById("fechaDelEvento");
+  var fechaDelEvento = datosDocumento.fechaDeEvento;
+  var fechaEvento = new Date(fechaDelEvento);
+  var fechaEventoFormateada = fechaEvento.toLocaleDateString();
+  fechaDelEventoElement.innerHTML = fechaEventoFormateada;
+  
+  
+  //$("#cantidadPersonas").html(datosDocumento.cantidadDePersonas)
+  var cantidadPersonasElement = document.getElementById("cantidadPersonas");
+  var cantidadPersonas = datosDocumento.cantidadDePersonas;
+  if (cantidadPersonas === "") {
+    cantidadPersonasElement.innerHTML = "0";
+  } else {
+    cantidadPersonasElement.innerHTML = cantidadPersonas;
+  }
+  
+  // $("#costoFirma").html(datosDocumento.costoParaFirmar)
+  // $("#precio").html("$"+datosDocumento.costoPaquete)
+  // $("#anticipo").html(datosDocumento.anticipo)
+  var anticipoElement = document.getElementById("anticipo");
+  var costoanticipo = datosDocumento.anticipo;
+  var costoanticipoFormateado = formatoConComas(costoanticipo);
+  anticipoElement.innerHTML = "$" + costoanticipoFormateado;
+
+  var precioElement = document.getElementById("precio");
+  var costoPaquete = datosDocumento.costoPaquete;
+  var costoFormateado = formatoConComas(costoPaquete);
+  precioElement.innerHTML = "$" + costoFormateado;
+
+  var costoFirmaElement = document.getElementById("costoFirma");
+  var costoFirma = datosDocumento.costoParaFirmar;
+  var costoFormateadocostoFirma = formatoConComas(costoFirma);
+  costoFirmaElement.innerHTML = "$" + costoFormateadocostoFirma;
+  // Función para formatear un número con comas cada tres dígitos
+  function formatoConComas(numero) {
+    return numero.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
   
 }
 
@@ -115,7 +138,7 @@ function mostrarImagenes(valor){
   console.log(`llll: ${multimediaUrl}`);
   const imagenes = multimediaUrl.split(",");
   const imagenFija="img/jasso3.jpg"
-var plantilla=""
+  var plantilla=""
   imagenes.forEach(imagen => {
     //console.log(`imagen: ${imagen}`);
     plantilla += `

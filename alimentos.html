@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Jasson">
- 
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JASSO | Promo</title>
@@ -26,6 +26,11 @@
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -42,6 +47,7 @@
                     <div class="header__logo">
                         <a href="?">
                             <img src="img/JassoCompany.png" id="logonav" alt="">
+                            <!-- <p src="" id="logonav" alt=""> -->
                         </a>
                     </div>
                 </div>
@@ -119,9 +125,9 @@
                 </div>
             </div>
             <!-- <p id="descripcion" style="size: 11px;  font-weight: bold;"></p> -->
-            <pre >
+            <pre>
             </pre>
-            <pre id="descripcion" style="white-space: pre-wrap">
+            <pre id="descripcion" style="white-space: pre-wrap; font-family: Urbanist, sans-serif;">
             </pre>
         </div>
     </section>
@@ -151,36 +157,53 @@
                 </div>
             </div>
             <div>
-                
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Precio del Paquete:</li><p id="precio" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Categoria:</p>
+                    <p id="Categoria" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Tipo de evento:</li><p id="tipoEventos" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Precio del Paquete:</p>
+                    <p id="precio" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Telefono:</li><p id="telefono" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Anticipo:</p>
+                    <p id="anticipo" style="size: 11px; font-weight: bold;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Anticipo:</li><p id="anticipo" style="size: 11px; font-weight: bold;"></p>
+                    <p>Precio para firmar contrato:</p>
+                    <p id="costoFirma" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Cantidad de personas:</li><p id="cantidadPersonas" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Tipo de evento:</p>
+                    <p id="tipoEventos" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Precio por firmar contrato:</li><p id="costoFirma" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Telefono:</p>
+                    <p id="telefono" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Direccion:</li><p id="direcccion" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Valor agregado:</p>
+                    <p id="valorAgregado" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Lugar:</li><p id="lugar" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Cantidad de personas:</p>
+                    <p id="cantidadPersonas" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Oferta valida hasta:</li><p id="validoHasta" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Direccion:</p>
+                    <p id="direcccion" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
                 <div style="display: flex; flex-direction: row; justify-content: space-between;">
-                    <li>Valor agregado:</li><p id="valorAgregado" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                    <p>Oferta valida hasta:</p>
+                    <p id="validoHasta" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p>Fecha del Evento:</p>
+                    <p id="fechaDelEvento" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <p>Lugar:</p>
+                    <p id="lugar" style="size: 11px;  font-weight: bold; text-align: justify;"></p>
                 </div>
             </div>
         </div>
@@ -201,7 +224,7 @@
                         </div>
                     </div> -->
     <!-- About Section Begin -->
-    <section class="about spad">
+    <!-- <section class="about spad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -223,7 +246,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- About Section End -->
 
     <!-- Services Section Begin 
@@ -315,7 +338,7 @@
 
     <!-- Countdown Section Begin -->
     <section class="countdown spad set-bg" data-setbg="img/jasso12.jpg">
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="countdown__text">
@@ -340,13 +363,13 @@
                             <p>seconds</p>
                         </div>
                     </div>
-<!--                     
+                    
                     <div class="buy__tickets">
                         <a href="#" class="primary-btn">Buy tickets</a>
-                    </div> -->
+                    </div> 
                 </div>
             </div>
-        </div>
+        </div> -->
     </section>
     <!-- Countdown Section End -->
 
@@ -383,19 +406,19 @@
                 </div>
                 <div class="col-lg-3 offset-lg-1 col-md-6">
                     <div class="footer__newslatter">
-                        <h4>Contáctame</h4>
-                        <form action="#">
+                        <h4>Direccion</h4>
+                        <h6 style="color: white;">Jardín, 25352 Arteaga, Coah.</h6>
+                        <!-- <form action="#">
                             <input type="text" placeholder="Email">
                             <button type="submit"><i class="fa fa-send-o"></i></button>
-                        </form>
+                        </form> -->
                     </div>
                 </div>
             </div>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
             <div class="footer__copyright__text">
                 <p>Copyright &copy;
-                 All rights reserved | by <a href="https://colorlib.com"
-                        target="_blank">JASSO</a>
+                    All rights reserved | by <a href="https://colorlib.com" target="_blank">JASSO</a>
                 </p>
             </div>
             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
@@ -403,8 +426,8 @@
     </footer>
     <a id="whatsappLink" href="?" class="whatsapp" target="_blank">
         <i class="fa fa-whatsapp whatsapp-icon"></i>
-      </a>
-        <!-- Footer Section End -->
+    </a>
+    <!-- Footer Section End -->
 
     <!-- Js Plugins -->
     <script src="js/jquery-3.3.1.min.js"></script>
