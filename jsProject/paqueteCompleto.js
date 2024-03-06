@@ -72,7 +72,7 @@ function mostrarResultado(data) {
   // Obtener el objeto con los datos del documento
   const datosDocumento = data.data();
   if (datosDocumento.multimediaUrl) {
-   mostrarImagenes(datosDocumento.multimediaUrl);
+    mostrarImagenes(datosDocumento.multimediaUrl);
   }
 
   $("#nombrePublicacion").html(datosDocumento.nombre)
@@ -131,27 +131,38 @@ function mostrarResultado(data) {
   }
   
 }
-
-function mostrarImagenes(valor){
-  
+function mostrarImagenes(valor) {
   const multimediaUrl = String(valor);
   console.log(`llll: ${multimediaUrl}`);
   const imagenes = multimediaUrl.split(",");
-  const imagenFija="img/jasso3.jpg"
-  var plantilla=""
+  const primeraImagen = imagenes[0]; // Obtenemos la primera imagen del array
+
+  // Cambia el estilo de fondo del banner existente
+  $("#bgBanner").css({
+    "background-image": `url(${primeraImagen})`,
+    "background-size": "cover",  // Por ejemplo, puedes agregar más propiedades aquí
+    "background-position": "center",
+    "background-repeat": "no-repeat",
+    "filter": "contrast(40%);"
+});
+
+
+  // Genera la plantilla de las imágenes
+  var plantilla = "";
   imagenes.forEach(imagen => {
-    //console.log(`imagen: ${imagen}`);
-    plantilla += `
-    <div class="card">
-        <div class="card-body">
-            <img src="${imagen}" class="card-img-top" alt="Imagen">
-        </div>
-    </div>`;
- })
-    // Agrega la plantilla al contenedor
-    $("#fotosPublicacion").html(plantilla);
-    // Inicializa Owl Carousel después de cargar las imágenes
-    $("#fotosPublicacion").owlCarousel({
+      plantilla += `
+          <div class="card">
+              <div class="card-body">
+                  <img src="${imagen}" class="card-img-top" alt="Imagen">
+              </div>
+          </div>`;
+  });
+
+  // Agrega la plantilla al contenedor
+  $("#fotosPublicacion").html(plantilla);
+
+  // Inicializa Owl Carousel después de cargar las imágenes
+  $("#fotosPublicacion").owlCarousel({
       loop: true,
       margin: 10,
       nav: true,
@@ -167,8 +178,8 @@ function mostrarImagenes(valor){
           }
       }
   });
-
 }
+
 
 
 
