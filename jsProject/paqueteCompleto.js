@@ -97,8 +97,7 @@ function mostrarResultado(data) {
   var fechaEvento = new Date(fechaDelEvento);
   var fechaEventoFormateada = fechaEvento.toLocaleDateString();
   fechaDelEventoElement.innerHTML = fechaEventoFormateada;
-  
-  
+
   //$("#cantidadPersonas").html(datosDocumento.cantidadDePersonas)
   var cantidadPersonasElement = document.getElementById("cantidadPersonas");
   var cantidadPersonas = datosDocumento.cantidadDePersonas;
@@ -106,6 +105,14 @@ function mostrarResultado(data) {
     cantidadPersonasElement.innerHTML = "0";
   } else {
     cantidadPersonasElement.innerHTML = cantidadPersonas;
+  }
+
+  var LugarElement = document.getElementById("lugar");
+  var lugar = datosDocumento.lugar;
+  if (lugar === "") {
+    LugarElement.innerHTML = "-";
+  } else {
+    LugarElement.innerHTML = lugar;
   }
   
   // $("#costoFirma").html(datosDocumento.costoParaFirmar)
