@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/layout.css">
+    <title>Documento</title>
+    <style>
+        #layout {
+            position: relative;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+</head>
+
+<body onload="autoClick()">
+    <div class="container">
+        <div class="propiedades">
+            <input type="number" id="widthInput" min="0" step="1" placeholder="Ancho">
+            <input type="number" id="heightInput" min="0" step="1" placeholder="Alto">
+            
+            <button id="decreaseZIndexButton" style="display:none; width: 2.3vh; padding: 0;">▼</button>
+            <span id="zIndexValue" style="display:none; font-size: 10px;"></span>
+            <button id="increaseZIndexButton" style="display:none; width: 2.3vh; padding: 0;">▲</button>
+            <select id="backgroundSelect">
+                <option value="">PLANTILLAS</option>
+                <option value="./img/layout/image (1).jpg">Espacio Cerrado</option>
+                <option value="./img/layout/Vector 39.png">Casa Antigua Jardin</option>
+                <option value="./img/layout/Group 1000006173.png">Salon</option>
+                <option value="./img/layout/Group 1000006174.png">Dormitorios</option>
+            </select>
+            <input type="number" id="rotationInput" min="0" step="1" placeholder="Ángulo">
+            <button id="rotateButton"></button>
+
+            <!-- <a id="download">Download</a> -->
+            <img src="./img/btnEliminar.png" id="deleteButton" style="display:none;">
+        </div>`
+        <div class="container-categorias">
+            <div class="menu-toggle"></div>
+            <div class="container-menu">
+                <div class="categorias">
+                    <img src="./img/layout/mesa.png" style="width: 100%; margin-top: 3vh;" class="categoria" data-categoria="categoria1"/>
+                    <img src="./img/layout/silla.png" style="width: 100%; margin-top: 2vh;" class="categoria" data-categoria="categoria2"/>
+                    <img src="./img/layout/escenario.png" style="width: 100%; margin-top: 2vh;" class="categoria" data-categoria="categoria2"/>
+                </div>
+                <hr>
+                <div class="objetos categoria1">
+                    <img src="./img/layout/mesa1.png" alt="" class="obj">
+                    <img src="./img/layout/mesa2.png" alt="" class="obj">
+                    <img src="./img/layout/mesa3.png" alt="" class="obj">
+                </div>
+                <div class="objetos categoria2" style="display:none;">
+                    <img src="./img/layout/silla1.png" alt="" class="obj">
+                    <img src="./img/layout/silla2.png" alt="" class="obj">      
+                </div>
+                <div class="objetos categoria3" style="display:none;">
+                    <img src="./img/layout/Group 1000006170.png" alt="" class="obj">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="container-layout" id="container-layout">
+            <div class="layout" id="layout">
+                a
+            </div>
+        </div>
+        <!-- <div class="container-menu">
+            <div class="objetos">
+                <img src="./img/Ellipse 758.png" alt="" class="obj">
+                <img src="./img/Rectangle 22435.png" alt="" class="obj">
+                <img src="./img/Rectangle 22436.png" alt="" class="obj">
+                <img src="./img/Rectangle 22437.png" alt="" class="obj">
+                <img src="./img/Rectangle 22438.png" alt="" class="obj">
+                <img src="./img/Group 1000006170.png" alt="" class="obj">
+                <img src="./img/Rectangle 22435 (1).png" alt="" class="obj">
+                <img src="./img/Rectangle 22436 (1).png" alt="" class="obj">
+                <img src="./img/Rectangle 22436 (2).png" alt="" class="obj">
+            </div>
+        </div>
+         -->
+    </div>
+</body>
+<script>
+    var miDiv = document.getElementById("layout");
+    var backgroundSelect = document.getElementById("backgroundSelect");
+
+    backgroundSelect.addEventListener("change", function () {
+        var selectedBackground = backgroundSelect.value;
+        miDiv.style.backgroundImage = "url('" + selectedBackground + "')";
+        miDiv.style.backgroundColor = "#1E1E1E";
+    });
+
+    var rotationInput = document.getElementById("rotationInput");
+    var rotateButton = document.getElementById("rotateButton");
+
+    // Agregar eventos para rotar el objeto desde el botón
+    rotateButton.addEventListener('click', function () {
+        if (selectedObj !== null) {
+            // Obtener el ángulo actual
+            var rotationValue = parseFloat(rotationInput.value) || 0;
+            // Incrementar el ángulo en 20 grados
+            rotationValue += 20;
+            // Limitar el ángulo a 360 grados
+            rotationValue = rotationValue % 360;
+            // Aplicar la rotación al objeto seleccionado
+            selectedObj.style.transform = "rotate(" + rotationValue + "deg)";
+            // Actualizar el valor del input de rotación
+            rotationInput.value = rotationValue;
+        }
+    });
+
+    // Agregar eventos para rotar el objeto desde el input
+    rotationInput.addEventListener('input', function () {
+        if (selectedObj !== null) {
+            var rotationValue = rotationInput.value || 0;
+            selectedObj.style.transform = "rotate(" + rotationValue + "deg)";
+        }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const categorias = document.querySelectorAll('.categoria');
+        const containerMenu = document.querySelector('.container-menu');
+
+        menuToggle.addEventListener('click', () => {
+            containerMenu.style.display = containerMenu.style.display === 'none' ? 'block' : 'none';
+        });
+
+        categorias.forEach(categoria => {
+            categoria.addEventListener('click', function () {
+                const categoriaSeleccionada = this.dataset.categoria;
+                document.querySelectorAll('.objetos').forEach(objeto => {
+                    if (objeto.classList.contains(categoriaSeleccionada)) {
+                        objeto.style.display = 'block';
+                    } else {
+                        objeto.style.display = 'none';
+                    }
+                });
+            });
+        });
+    });
+
+
+</script>
+<script type="text/javascript">
+    function autoClick() {
+        $("#download").click();
+    }
+
+    $(document).ready(function () {
+        var element = $("#layout");
+
+        $("#download").on('click', function () {
+            html2canvas(element, {
+                onrendered: function (canvas) {
+                    var imageData = canvas.toDataURL("image/jpg");
+                    var newData = imageData.replace(/^data:image\/jpg/, "data:application/octet-stream");
+                    $("#download").attr("download", "image.jpg").attr("href", newData);
+                }
+            });
+
+        });
+    });
+</script>
+<script>
+    var layout = document.getElementById("layout");
+    var obj = document.getElementsByClassName("obj");
+    var widthInput = document.getElementById("widthInput");
+    var heightInput = document.getElementById("heightInput");
+    var deleteButton = document.getElementById("deleteButton");
+    var increaseZIndexButton = document.getElementById("increaseZIndexButton");
+    var decreaseZIndexButton = document.getElementById("decreaseZIndexButton");
+    var zIndexValueSpan = document.getElementById("zIndexValue");
+    var selectedObj = null; // Variable para mantener el objeto seleccionado
+    var zIndexCounter = 1; // Inicializar el contador de z-index
+
+    layout.addEventListener("dragover", (ev) => permitirSoltar(ev));
+    layout.addEventListener("drop", (ev) => soltar(ev));
+
+    for (var i = 0; i < obj.length; i++) {
+        obj[i].setAttribute("draggable", "true");
+        obj[i].setAttribute("id", "obj" + i);
+        obj[i].addEventListener("dragstart", (ev) => iniciarArrastre(ev));
+        obj[i].addEventListener("click", (ev) => seleccionarObjeto(ev.target)); // Pasar el objeto como parámetro
+    }
+
+    function iniciarArrastre(ev) {
+        ev.dataTransfer.setData("idObj", ev.target.id);
+    }
+
+    function permitirSoltar(ev) {
+        ev.preventDefault();
+    }
+
+    function soltar(ev) {
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("idObj");
+        var clone = document.getElementById(data).cloneNode(true);
+        clone.setAttribute("id", data + "-" + new Date().getTime());
+        clone.setAttribute("draggable", "true");
+        clone.classList.add("obj");
+        clone.style.position = "absolute";
+        clone.style.left = (ev.clientX - ev.target.offsetLeft) + "px";
+        clone.style.top = (ev.clientY - ev.target.offsetTop) + "px";
+        clone.style.zIndex = zIndexCounter++; // Asignar z-index y luego incrementar el contador
+
+        // Establecer tamaño predefinido
+        clone.style.width = "100px"; // Aquí puedes establecer el ancho predefinido que desees
+        clone.style.height = "100px"; // Aquí puedes establecer el alto predefinido que desees
+
+        layout.appendChild(clone);
+        initDrag(clone); // Iniciar el arrastre dentro del layout
+        seleccionarObjeto(clone); // Seleccionar el objeto clonado
+
+        // Agregar eventos de clic para los objetos ya en el layout
+        var objetosLayout = document.getElementById("layout").getElementsByClassName("obj");
+        for (var i = 0; i < objetosLayout.length; i++) {
+            objetosLayout[i].addEventListener("click", function (ev) {
+                seleccionarObjeto(ev.target);
+            });
+        }
+    }
+
+
+    function initDrag(element) {
+        var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+        element.onmousedown = dragMouseDown;
+
+        function dragMouseDown(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            document.onmouseup = closeDragElement;
+            document.onmousemove = elementDrag;
+        }
+
+        function elementDrag(e) {
+            e = e || window.event;
+            e.preventDefault();
+            pos1 = pos3 - e.clientX;
+            pos2 = pos4 - e.clientY;
+            pos3 = e.clientX;
+            pos4 = e.clientY;
+            element.style.top = (element.offsetTop - pos2) + "px";
+            element.style.left = (element.offsetLeft - pos1) + "px";
+        }
+
+        function closeDragElement() {
+            document.onmouseup = null;
+            document.onmousemove = null;
+        }
+    }
+
+    function seleccionarObjeto(objeto) {
+        if (selectedObj !== null && selectedObj !== objeto) {
+            selectedObj.style.outline = ""; // Quitar el focus del objeto previamente seleccionado si no es el mismo objeto
+        }
+        selectedObj = objeto; // Establecer el nuevo objeto seleccionado
+        selectedObj.style.outline = "2px solid blue"; // Mostrar el focus en el objeto seleccionado
+
+        console.log("Objeto seleccionado:", selectedObj.id); // Mostrar el ID del objeto seleccionado en la consola
+
+        // Obtener el ancho y alto del objeto seleccionado
+        var width = selectedObj.offsetWidth;
+        var height = selectedObj.offsetHeight;
+        // Asignar los valores a los inputs
+        widthInput.value = width;
+        heightInput.value = height;
+
+        // Obtener la rotación del objeto seleccionado
+        var transformValue = window.getComputedStyle(selectedObj).getPropertyValue('transform');
+        var matrix = transformValue.match(/^matrix\((.+)\)$/);
+        var rotation = matrix ? parseFloat(matrix[1].split(', ')[0]) : 0;
+        // Asignar el valor al input de rotación
+        rotationInput.value = rotation;
+
+        // Mostrar los botones de eliminar, rotar y mover
+        deleteButton.style.display = 'block';
+        increaseZIndexButton.style.display = 'block';
+        decreaseZIndexButton.style.display = 'block';
+        zIndexValueSpan.style.display = 'block';
+
+        // Mostrar el valor actual del z-index del objeto seleccionado
+        zIndexValueSpan.textContent = "Capa: " + selectedObj.style.zIndex;
+
+        // Agregar eventos para modificar el tamaño del objeto desde los inputs
+        widthInput.addEventListener('input', function () {
+            selectedObj.style.width = widthInput.value + 'px';
+        });
+
+        heightInput.addEventListener('input', function () {
+            selectedObj.style.height = heightInput.value + 'px';
+        });
+
+        // Enfocar los inputs cuando se selecciona un objeto
+        widthInput.focus();
+    }
+
+
+    deleteButton.onclick = function () {
+        if (selectedObj !== null) {
+            selectedObj.remove(); // Eliminar el objeto seleccionado
+            deleteButton.style.display = 'none'; // Ocultar el botón de eliminar
+            increaseZIndexButton.style.display = 'none'; // Ocultar el botón de aumentar z-index
+            decreaseZIndexButton.style.display = 'none'; // Ocultar el botón de disminuir z-index
+            zIndexValueSpan.style.display = 'none'; // Ocultar el valor del z-index
+            selectedObj = null; // Reiniciar el objeto seleccionado
+        }
+    };
+
+    increaseZIndexButton.onclick = function () {
+        if (selectedObj !== null) {
+            selectedObj.style.zIndex = zIndexCounter++;
+            zIndexValueSpan.textContent = "Capa: " + selectedObj.style.zIndex; // Actualizar el valor del z-index mostrado
+        }
+    };
+
+    decreaseZIndexButton.onclick = function () {
+        if (selectedObj !== null) {
+            selectedObj.style.zIndex = zIndexCounter--;
+            zIndexValueSpan.textContent = "Capa: " + selectedObj.style.zIndex; // Actualizar el valor del z-index mostrado
+        }
+    };
+
+</script>
+
+</html>
