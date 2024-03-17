@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/layout.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <title>Documento</title>
     <style>
         #layout {
@@ -12,14 +15,17 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script> -->
 </head>
 
 <body onload="autoClick()">
     <div class="container">
+
         <div class="propiedades">
-            <input type="number" id="widthInput" min="0" step="1" placeholder="Ancho">
-            <input type="number" id="heightInput" min="0" step="1" placeholder="Alto">
+
             <select id="backgroundSelect">
                 <option value="">PLANTILLAS</option>
                 <option value="./img/layout/image (1).jpg">Espacio Cerrado</option>
@@ -27,50 +33,97 @@
                 <option value="./img/layout/Group 1000006173.png">Salon</option>
                 <option value="./img/layout/Group 1000006174.png">Dormitorios</option>
             </select>
-            <button id="decreaseZIndexButton" style="display:none; width: 1vh; padding: 0;">▼</button>
-            <span id="zIndexValue" style="display:none; font-size: 10px; margin-left: 5vh;"></span>
-            <button id="increaseZIndexButton"
-                style="display:none; width: 2.3vh; margin-left: 2vh; padding: 0;">▲</button>
 
-            <input type="number" id="rotationInput" min="0" step="1" placeholder="Ángulo">
-            <img src="https://img.icons8.com/fluency/48/rotate.png" id="rotateButton" />
-            <!-- <a id="download">Download</a> -->
-            <img src="./img/layout/btnEliminar.png" id="deleteButton" style="display:none;">
+            <div class="textos">
+                <label for="textInput">Texto:</label>
+                <input type="text" id="textInput" placeholder="Introduce texto aquí">
+                <button id="applyTextButton">Aplicar Texto</button>
+
+                <label for="textSizeInput">Tamaño del texto:</label>
+                <div class="textoycolor">
+                    <input type="number" id="textSizeInput" min="1" max="100" placeholder="00">
+                    <input type="color" id="textColorInput">
+                </div>
+                <button id="applyTextSizeButton">Aplicar Tamaño</button>
+            </div>
+
+            <div class="titlew">
+                <label for="widthRange">Ancho:</label>
+                <input type="number" id="widthInput" min="0" step="1" placeholder="Ancho">
+            </div>
+            <input type="range" class="range" id="widthRange" min="0" max="500" value="100">
+
+            <div class="titleh">
+                <label for="heightRange">Alto:</label>
+                <input type="number" id="heightInput" min="0" step="1" placeholder="Alto">
+            </div>
+            <input type="range" class="range" id="heightRange" min="0" max="500" value="100">
+
+            <div class="capas">
+                <button id="decreaseZIndexButton">▼</button>
+                <span id="zIndexValue" style="display:inline;"></span>
+                <button id="increaseZIndexButton">▲</button>
+            </div>
+
+            <div class="angulos">
+                <img src="https://img.icons8.com/fluency/48/rotate.png" id="rotateButton" />
+                <input type="number" id="rotationInput" min="0" step="1" placeholder="Ángulo">
+            </div>
+
+            <div class="buttons">
+                <img src="./img/layout/btnEliminar.png" id="deleteButton" style="display:inline;">
+                <button id="download" class="btnExportar">Exportar</button>
+            </div>
+
+
         </div>
+
         <div class="container-categorias">
+
             <div style=" display: flex; justify-content: center;">
                 <img src="./img/layout/menu.png" class="menu-toggle" />
             </div>
+
             <div class="container-menu" style="touch-action: none;">
+
                 <div class="categorias" style="touch-action: none;">
-                    <img src="./img/layout/mesa.png" style="width: 100%; margin-top: 3vh;" class="categoria"
-                        data-categoria="categoria1" />
-                    <img src="./img/layout/silla.png" style="width: 100%; margin-top: 2vh;" class="categoria"
-                        data-categoria="categoria2" />
-                    <img src="./img/layout/escenario.png" style="width: 100%; margin-top: 2vh;" class="categoria"
-                        data-categoria="categoria2" />
+                    <img src="./img/layout/tmesas.png" class="categoria" data-categoria="categoria1" />
+                    <img src="./img/layout/tescenario.png" class="categoria" data-categoria="categoria2" />
+                    <img src="./img/layout/ttexto.png" class="categoria" data-categoria="categoria3" />
                 </div>
+
                 <hr>
+
                 <div class="objetos categoria1" style="touch-action: none;">
                     <img src="./img/layout/mesa1.png" alt="" class="obj">
                     <img src="./img/layout/mesa2.png" alt="" class="obj">
                     <img src="./img/layout/mesa3.png" alt="" class="obj">
+                    <!-- <img src="./img/layout/mesa4.png" alt="" class="obj">
+                    <img src="./img/layout/mesa5.png" alt="" class="obj">
+                    <img src="./img/layout/mesa6.png" alt="" class="obj"> -->
                 </div>
-                <div class="objetos categoria2" style="display:none; touch-action: none;">
-                    <img src="./img/layout/silla1.png" alt="" class="obj">
-                    <img src="./img/layout/silla2.png" alt="" class="obj">
-                </div>
-                <div class="objetos categoria3" style="display:none; touch-action: none;">
-                    <img src="./img/layout/Group 1000006170.png" alt="" class="obj">
 
+                <div class="objetos categoria2" style="display:none; touch-action: none;">
+                    <!-- <img src="./img/layout/es1.png" alt="" class="obj"> -->
+                    <img src="./img/layout/es2.png" alt="" class="obj">
+                    <img src="./img/layout/es3.png" alt="" class="obj">
+                    <img src="./img/layout/es4.png" alt="" class="obj">
+                    <img src="./img/layout/es5.png" alt="" class="obj">
                 </div>
+
+                <div class="objetos categoria3" style="display:none; touch-action: none;">
+                    <input type="text" class="obj" placeholder="TXT">
+                </div>
+
             </div>
         </div>
+
         <div class="container-layout" id="container-layout">
             <div class="layout" id="layout">
-                a
+
             </div>
         </div>
+
         <!-- <div class="container-menu">
             <div class="objetos">
                 <img src="./img/Ellipse 758.png" alt="" class="obj">
@@ -87,6 +140,31 @@
          -->
     </div>
 </body>
+<script>
+ function generatePNG() {
+    var layout = document.getElementById("layout");
+
+    // Configura html2canvas para que tome una captura del layout
+    html2canvas(layout, {
+        useCORS: true // Para permitir imágenes de otros dominios.
+    }).then(function (canvas) {
+        // Crea un enlace temporal para descargar la imagen
+        var tempLink = document.createElement('a');
+        tempLink.href = canvas.toDataURL('image/png');
+        tempLink.setAttribute('download', 'layout.png');
+        tempLink.click();
+    }).catch(function (error) {
+        console.log("Error al crear PNG: " + error.message);
+    });
+}
+$(document).ready(function () {
+    $("#download").on('click', function () {
+        generatePNG(); // Cambia esto por generatePDF() si prefieres exportar a PDF
+    });
+});
+
+</script>
+
 <script>
     var layout = document.getElementById("layout");
     var obj = document.getElementsByClassName("obj");
@@ -144,6 +222,7 @@
             document.ontouchend = null;
             document.ontouchmove = null;
         }
+
     }
 
     // Esta sección es para cuando el DOM esté completamente cargado
@@ -152,23 +231,39 @@
             obj.addEventListener('click', function () {
                 var clone = obj.cloneNode(true);
                 clone.style.position = 'absolute';
-                clone.style.left = '0px'; // Posición inicial arbitraria
-                clone.style.top = '0px'; // Posición inicial arbitraria
+                // Calcular el centro del layout
+                var layoutCenterX = layout.offsetWidth / 2;
+                var layoutCenterY = layout.offsetHeight / 2;
 
+                // Posicionar el objeto clonado en el centro del layout
+                clone.style.left = (layoutCenterX - clone.offsetWidth / 2) + 'px';
+                clone.style.top = (layoutCenterY - clone.offsetHeight / 2) + 'px';
                 layout.appendChild(clone);
                 makeDraggable(clone);
 
                 clone.addEventListener('click', function () {
-                    if (selectedObj) {
-                        selectedObj.classList.remove('selected');
-                    }
-                    selectedObj = clone;
-                    clone.classList.add('selected');
-                    // Aquí podrías actualizar los inputs o controles UI según las propiedades del objeto seleccionado
+                    seleccionarObjeto(clone); // Llama a la función seleccionarObjeto para enfocar el objeto seleccionado
                 });
             });
 
         });
+        document.querySelectorAll('.container-layout .obj').forEach(function (obj) {
+            obj.addEventListener('click', function () {
+                seleccionarObjeto(obj); // Llama a la función seleccionarObjeto para enfocar el objeto seleccionado
+            });
+        });
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var textColorInput = document.getElementById('textColorInput');
+
+        textColorInput.addEventListener('input', function () {
+            if (selectedObj && selectedObj.tagName === "INPUT" && selectedObj.type === "text") {
+                selectedObj.style.color = textColorInput.value;
+            }
+        });
+
+        // Otros manejadores de eventos...
     });
 
     function quitarFoco() {
@@ -176,10 +271,10 @@
             selectedObj.classList.remove('selected');
             selectedObj.style.outline = ""; // O cualquier otro estilo que indique el foco
             // También oculta los botones de control
-            deleteButton.style.display = 'none';
-            increaseZIndexButton.style.display = 'none';
-            decreaseZIndexButton.style.display = 'none';
-            zIndexValueSpan.style.display = 'none';
+            deleteButton.style.display = 'inline';
+            increaseZIndexButton.style.display = 'inline';
+            decreaseZIndexButton.style.display = 'inline';
+            zIndexValueSpan.style.display = 'inline';
             selectedObj = null;
         }
     }
@@ -187,35 +282,74 @@
     // Ahora, configura un detector de eventos en el contenedor o el documento:
     document.addEventListener('click', function (e) {
         // Comprueba si el clic fue fuera de un objeto seleccionable
-        if (!e.target.classList.contains('obj') && !e.target.classList.contains('propiedades')) {
+        if (!e.target.classList.contains('obj') && !e.target.classList.contains('propiedades') && !e.target.closest('.propiedades')) {
             quitarFoco();
         }
     }, true);
 
     function seleccionarObjeto(objeto) {
+        document.getElementById('widthRange').value = parseInt(selectedObj.style.width);
+        document.getElementById('heightRange').value = parseInt(selectedObj.style.height);
+
         if (selectedObj !== null && selectedObj !== objeto) {
             selectedObj.classList.remove('selected');
         }
-
+        if (selectedObj.tagName === "INPUT" && selectedObj.type === "text") {
+            document.getElementById('textInput').value = selectedObj.value;
+        } else {
+            document.getElementById('textInput').value = '';
+        }
         selectedObj = objeto; // Establecer el nuevo objeto seleccionado
         selectedObj.classList.add('selected');
         selectedObj.style.outline = "2px solid blue"; // Mostrar el foco en el objeto seleccionado
 
-        // Actualizar los inputs con las dimensiones actuales del objeto seleccionado
-        widthInput.value = parseInt(window.getComputedStyle(selectedObj).width, 10);
-        heightInput.value = parseInt(window.getComputedStyle(selectedObj).height, 10);
-
-        // Actualizar el valor actual del z-index del objeto seleccionado
+        widthInput.value = selectedObj.clientWidth;
+        heightInput.value = selectedObj.clientHeight;
         zIndexValueSpan.textContent = "Capa: " + selectedObj.style.zIndex;
-
         // Mostrar los controles
         deleteButton.style.display = 'inline'; // Asegúrate de que el display se ajuste a tu CSS
         increaseZIndexButton.style.display = 'inline';
         decreaseZIndexButton.style.display = 'inline';
         zIndexValueSpan.style.display = 'inline';
+
+        selectedObj.addEventListener('wheel', function (event) {
+            event.preventDefault();
+
+            var scaleFactor = 1.1; // Factor de escala para el zoom
+            var delta = event.deltaY || event.detail || event.wheelDelta;
+
+            // Determinar la dirección del zoom (in o out)
+            var zoomDirection = delta < 0 ? 1 : -1;
+
+            // Obtener el tamaño actual del objeto
+            var currentWidth = parseFloat(selectedObj.style.width);
+            var currentHeight = parseFloat(selectedObj.style.height);
+
+            // Calcular el nuevo tamaño del objeto
+            var newWidth = currentWidth * (1 + zoomDirection * 0.1);
+            var newHeight = currentHeight * (1 + zoomDirection * 0.1);
+
+            // Aplicar el nuevo tamaño al objeto
+            selectedObj.style.width = newWidth + 'px';
+            selectedObj.style.height = newHeight + 'px';
+
+            // Actualizar los inputs de ancho y alto
+            widthInput.value = newWidth;
+            heightInput.value = newHeight;
+        });
     }
 
-
+    document.getElementById('applyTextButton').addEventListener('click', function () {
+        if (selectedObj && selectedObj.tagName === "INPUT" && selectedObj.type === "text") {
+            selectedObj.value = document.getElementById('textInput').value;
+        }
+    });
+    document.getElementById('applyTextSizeButton').addEventListener('click', function () {
+        if (selectedObj && selectedObj.tagName === "INPUT" && selectedObj.type === "text") {
+            var textSize = document.getElementById('textSizeInput').value;
+            selectedObj.style.fontSize = textSize + 'px';
+        }
+    });
     widthInput.addEventListener('change', function () {
         if (selectedObj) {
             selectedObj.style.width = widthInput.value + 'px';
@@ -230,14 +364,55 @@
 
     // Eventos para actualizar el tamaño del objeto seleccionado basado en los inputs
 
+    document.getElementById('widthRange').addEventListener('input', function () {
+        if (selectedObj) {
+            selectedObj.style.width = this.value + 'px';
+            widthInput.value = this.value;
+        }
+    });
+
+    document.getElementById('heightRange').addEventListener('input', function () {
+        if (selectedObj) {
+            selectedObj.style.height = this.value + 'px';
+            heightInput.value = this.value;
+        }
+    });
+
+    document.getElementById('widthInput').addEventListener('change', function () {
+        if (selectedObj) {
+            selectedObj.style.width = this.value + 'px';
+            document.getElementById('widthRange').value = this.value;
+        }
+    });
+
+    document.getElementById('heightInput').addEventListener('change', function () {
+        if (selectedObj) {
+            selectedObj.style.height = this.value + 'px';
+            document.getElementById('heightRange').value = this.value;
+        }
+    });
+
+    document.getElementById('widthRange').addEventListener('input', function () {
+        if (selectedObj) {
+            selectedObj.style.width = this.value + 'px';
+            document.getElementById('widthInput').value = this.value;
+        }
+    });
+
+    document.getElementById('heightRange').addEventListener('input', function () {
+        if (selectedObj) {
+            selectedObj.style.height = this.value + 'px';
+            document.getElementById('heightInput').value = this.value;
+        }
+    });
 
     deleteButton.onclick = function () {
         if (selectedObj !== null) {
             selectedObj.remove(); // Eliminar el objeto seleccionado
-            deleteButton.style.display = 'none'; // Ocultar el botón de eliminar
-            increaseZIndexButton.style.display = 'none'; // Ocultar el botón de aumentar z-index
-            decreaseZIndexButton.style.display = 'none'; // Ocultar el botón de disminuir z-index
-            zIndexValueSpan.style.display = 'none'; // Ocultar el valor del z-index
+            deleteButton.style.display = 'inline'; // Ocultar el botón de eliminar
+            increaseZIndexButton.style.display = 'inline'; // Ocultar el botón de aumentar z-index
+            decreaseZIndexButton.style.display = 'inline'; // Ocultar el botón de disminuir z-index
+            zIndexValueSpan.style.display = 'inline'; // Ocultar el valor del z-index
             selectedObj = null; // Reiniciar el objeto seleccionado
         }
     };
@@ -319,11 +494,11 @@
 
 
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function autoClick() {
         $("#download").click();
     }
-
+    //previsualizador display none
     $(document).ready(function () {
         var element = $("#layout");
 
@@ -338,6 +513,6 @@
 
         });
     });
-</script>
+</script> -->
 
 </html>
