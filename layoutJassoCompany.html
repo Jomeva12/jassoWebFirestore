@@ -72,7 +72,7 @@
 
             <div class="buttons">
                 <img src="./img/layout/btnEliminar.png" id="deleteButton" style="display:inline;">
-                <button id="download" class="btnExportar">Exportar</button>
+                <button id="download" class="btnExportar" onclick="showPreviewDialog()">Exportar</button>
             </div>
 
 
@@ -98,9 +98,11 @@
                     <img src="./img/layout/mesa1.png" alt="" class="obj">
                     <img src="./img/layout/mesa2.png" alt="" class="obj">
                     <img src="./img/layout/mesa3.png" alt="" class="obj">
+
                     <!-- <img src="./img/layout/mesa4.png" alt="" class="obj">
                     <img src="./img/layout/mesa5.png" alt="" class="obj">
                     <img src="./img/layout/mesa6.png" alt="" class="obj"> -->
+                   
                 </div>
 
                 <div class="objetos categoria2" style="display:none; touch-action: none;">
@@ -115,6 +117,7 @@
                     <input type="text" class="obj" placeholder="TXT">
                 </div>
 
+               
             </div>
         </div>
 
@@ -141,28 +144,53 @@
     </div>
 </body>
 <script>
- function generatePNG() {
-    var layout = document.getElementById("layout");
+    function showPreviewDialog() {
+        var layout = document.getElementById("layout");
 
-    // Configura html2canvas para que tome una captura del layout
-    html2canvas(layout, {
-        useCORS: true // Para permitir imágenes de otros dominios.
-    }).then(function (canvas) {
-        // Crea un enlace temporal para descargar la imagen
-        var tempLink = document.createElement('a');
-        tempLink.href = canvas.toDataURL('image/png');
-        tempLink.setAttribute('download', 'layout.png');
-        tempLink.click();
-    }).catch(function (error) {
-        console.log("Error al crear PNG: " + error.message);
-    });
-}
-$(document).ready(function () {
-    $("#download").on('click', function () {
-        generatePNG(); // Cambia esto por generatePDF() si prefieres exportar a PDF
-    });
-});
+        html2canvas(layout).then(function (canvas) {
+            var image = canvas.toDataURL("image/png");
 
+            if (window.AndroidInterface) {
+                window.AndroidInterface.showPreviewDialog(image);
+            } else {
+                console.error('La interfaz AndroidInterface no está disponible.');
+            }
+        });
+    }
+    // function autoClick() {
+    //     // Captura la imagen como PNG automáticamente cuando la página se carga
+    //     captureAsPNG();
+    // }
+
+    // function captureAsPNG() {
+    //     var layout = document.getElementById("layout");
+
+    //     // Tamaño real del layout
+    //     var layoutWidth = layout.offsetWidth;
+    //     var layoutHeight = layout.offsetHeight;
+
+    //     // Crear un lienzo temporal del tamaño del layout
+    //     var canvas = document.createElement("canvas");
+    //     canvas.width = layoutWidth;
+    //     canvas.height = layoutHeight;
+    //     var ctx = canvas.getContext('2d');
+
+    //     // Dibujar el contenido del layout en el lienzo
+    //     html2canvas(layout, {
+    //         canvas: canvas,
+    //         allowTaint: true, // Permitir el acceso al contenido cruzado para imágenes
+    //         useCORS: true // Usar CORS para cargar imágenes
+    //     }).then(function (canvas) {
+    //         // Convertir el lienzo en una imagen PNG
+    //         var image = canvas.toDataURL("image/png");
+
+    //         // Crear un enlace para descargar la imagen
+    //         var downloadLink = document.createElement('a');
+    //         downloadLink.href = image;
+    //         downloadLink.download = 'diseno.png';
+    //         downloadLink.click();
+    //     });
+    // }
 </script>
 
 <script>
@@ -247,6 +275,7 @@ $(document).ready(function () {
             });
 
         });
+        
         document.querySelectorAll('.container-layout .obj').forEach(function (obj) {
             obj.addEventListener('click', function () {
                 seleccionarObjeto(obj); // Llama a la función seleccionarObjeto para enfocar el objeto seleccionado

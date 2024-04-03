@@ -874,7 +874,7 @@ hr{
     .obj{
         /* position: absolute; */
         touch-action: none; 
-        width: 5%;
+        min-width: 5%;
         background-color: transparent;
         border: none;
         text-align: center;
@@ -985,7 +985,6 @@ input:focus {
     border-color: transparent;
     cursor: pointer;
 } */
-
 /*          textos          */
 /* .textos{
     display: flex;
@@ -1014,8 +1013,6 @@ input:focus {
    color: white;
    font-size: 10px;
 } */
-
-
 /* angulos */
 /* .angulos{
     display: flex;
@@ -1074,7 +1071,6 @@ input:focus {
     color: white;
 } */
 
-
 /* PLANTILLAS */
 /* .propiedades select {
     height: auto;
@@ -1086,7 +1082,6 @@ input:focus {
     padding-bottom: 1vh;
     border-bottom: 1px solid rgb(39, 39, 39);
 } */
-
 
 /* CATEGORIAS */
 /* .container-categorias {
@@ -1149,14 +1144,11 @@ input:focus {
     position: relative;
 } */
 
-
-
 /* .menu-toggle {
     cursor: pointer;
     width: 6vh;
     margin: 2vh 0;
 } */
-
 
 /* .obj{
     touch-action: none; 
