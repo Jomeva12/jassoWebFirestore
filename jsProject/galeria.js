@@ -54,13 +54,13 @@ function mostrarImagenes(valor) {
   const primeraImagen = imagenes[0]; // Obtenemos la primera imagen del array
 
   // Cambia el estilo de fondo del banner existente
-  $("#bgBanner").css({
-    "background-image": `url(${primeraImagen})`,
-    "background-size": "cover",  // Por ejemplo, puedes agregar más propiedades aquí
-    "background-position": "center",
-    "background-repeat": "no-repeat",
-    "filter": "contrast(40%);"
-});
+//   $("#bgBanner").css({
+//     "background-image": `url(${primeraImagen})`,
+//     "background-size": "cover",  // Por ejemplo, puedes agregar más propiedades aquí
+//     "background-position": "center",
+//     "background-repeat": "no-repeat",
+//     "filter": "contrast(40%);"
+// });
 
 
   // Genera la plantilla de las imágenes
