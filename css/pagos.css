@@ -1,0 +1,121 @@
+body {
+    background-color: rgba(0, 0, 0, 0.8);
+    background-image: url("../img/pagos/pago2.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: 50% 40%;
+    font-family: "Urbanist", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
+    animation: backgroundMove 120s linear infinite;
+}
+
+body:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 50% 40%;
+    }
+
+    15% {
+        background-position: 40% 40%;
+    }
+
+    30% {
+        background-position: 60% 40%;
+    }
+
+    60% {
+        background-position: 30% 50%;
+    }
+
+    75% {
+        background-position: 20% 20%;
+    }
+
+    90% {
+        background-position: 80% 40%;
+    }
+
+    100% {
+        background-position: 50% 40%;
+    }
+}
+
+.title-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.title-section h1 {
+    position: relative;
+    margin: 10vh 0 0 0;
+    color: white;
+}
+
+.title-section p {
+    position: relative;
+    margin: 1vh 2vh 2vh 2vh;
+    color: #ddd;
+    font-weight: 400;
+}
+
+#pagos-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    margin: 5vh 0 0 0;
+    border-collapse: separate;
+    border-spacing: 0;
+    /* border: 1px solid #ddd; */
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+thead {
+    background-color: rgb(255, 255, 255);
+}
+
+th {
+    padding: 1rem 2rem;
+
+}
+
+tr {
+    background-color: #dddddd92;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+}
+
+td {
+    color: rgba(255, 255, 255, 0.846);
+    font-weight: 400;
+    text-align: center;
+    padding: 1rem 2rem;
+}
+
+
+
+.erroMessage,
+.prospectoNoData,
+.errorMessageProspectos,
+.erroData {
+    color: red;
+    font-weight: 400;
+}
