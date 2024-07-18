@@ -1,0 +1,229 @@
+/* Importamos las fuentes */
+@font-face {
+    font-family: 'Caveat';
+    src: url('../font/Caveat-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Yellowtail';
+    src: url('../font/Yellowtail-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Zeyada';
+    src: url('../font/Zeyada-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden; /* Asegura que no haya scroll horizontal */
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.2); /* Inicialmente más transparente */
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.3s ease;
+    z-index: 2; /* Asegura que la barra de navegación esté sobre otros elementos */
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Asegura que la imagen esté detrás del texto */
+}
+
+.text {
+    text-align: center;
+    color: #fff;
+    z-index: 1; /* Asegura que el texto esté sobre la imagen */
+}
+
+#textoHorario {
+    color: #686262;
+    margin: 15px;
+}
+
+.title {
+    margin: 0;
+    font-size: 108px;
+    font-family: 'Caveat', cursive; /* Aplicamos la fuente Caveat */
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra de texto para mejor visibilidad */
+    font-weight: normal; /* Aseguramos que no sea bold */
+}
+
+.text p {
+    margin: 10px 0 0;
+    font-size: 24px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra de texto para mejor visibilidad */
+}
+
+.additional-content {
+    padding: 0px;
+    text-align: center;
+}
+
+.additional-content h2, .additional-content h3 {
+    font-family: 'Cursive', sans-serif; /* Ajusta la fuente según tus necesidades */
+    color: #333;
+}
+
+.additional-content p {
+    font-size: 18px;
+    color: #555;
+}
+
+.countdown-container {
+    position: relative;
+    width: 100%;
+}
+
+.second-image {
+    width: 100%;
+    height: auto;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Opacidad de la capa oscura */
+    z-index: 1;
+}
+
+.countdown {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7); /* Sombra de texto para mejor visibilidad */
+    z-index: 2; /* Asegura que el texto esté sobre la capa oscura */
+}
+
+#countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+#countdown div {
+    font-size: 24px;
+    color: #fff; /* Cambiamos el color del texto de la cuenta regresiva */
+}
+
+@media (max-width: 600px) {
+    .title {
+        font-size: 36px;
+    }
+
+    .text p {
+        font-size: 18px;
+    }
+
+    .logo {
+        font-size: 20px;
+        padding: 3px 7px;
+    }
+
+    #countdown div {
+        font-size: 18px;
+    }
+}
+
+/* Aplicamos las fuentes personalizadas */
+.yellowtail {
+    font-family: 'Yellowtail', cursive;
+}
+
+.zeyada {
+    color: #b38f00;
+    margin: 15px;
+    font-size: 25px;
+    font-family: 'Zeyada', cursive;
+}
+
+/* Estilo para el texto con gradiente dorado */
+.gradient-text {
+    background: linear-gradient(to right, #b38f00, #f9d423);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Estilo para los eventos */
+.event {
+    display: flex;
+    justify-content: space-between; /* Distribuye los elementos con espacio entre ellos */
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+}
+
+.event-image {
+    width: 190px;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.event-info {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.event-info h3 {
+    margin: 0;
+    font-family: 'Zeyada', cursive;
+    font-size: 24px;
+    color: #b38f00;
+}
+
+.event-info p {
+    margin: 5px 0 0;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Estilo para el iframe del mapa */
+.mapa {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    margin: 20px 0;
+}
