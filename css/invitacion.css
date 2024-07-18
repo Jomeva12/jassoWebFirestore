@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'AmsterdamFour';
+    src: url('../fonts/AmsterdamFour_ttf400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Amsterdam';
+    src: url('../fonts/Amsterdam400.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -48,14 +62,13 @@ img {
 
 .title-section p {
     margin-top: 0;
-    font-style: italic;
+    font-style: italic;   
 }
 
 .title-section h1 {
     margin: 0;
-    font-family: 'Great Vibes', cursive;
     font-size: 3em;
-    font-family: 'Ovo', serif;
+    font-family: 'Amsterdam', cursive;
 }
 
 @keyframes backgroundMove {

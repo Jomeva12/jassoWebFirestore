@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Layout with Fixed Header and Footer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Ovo&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: radial-gradient(circle, #E9ECE6, #F9F9F7);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            font-family: 'Ovo', serif;
+        }
+        .header, .footer {
+            width: 100%;
+            position: relative;
+            left: 0;
+            right: 0;
+            z-index: 0;
+        }
+        .header {
+            top: 0;
+            -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+        }
+        .footer {
+            bottom: 0;
+            -webkit-mask-image: linear-gradient(to top, black 75%, transparent 100%);
+            mask-image: linear-gradient(to top, black 75%, transparent 100%);
+        }
+        .image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .main-content {
+            flex: 1;
+            padding: 10px 20px; /* Adjust according to the height of the header and footer */
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #7A7D5A; /* Color verde similar al de la imagen */
+        }
+        .invitation-text {
+            font-family: 'Ovo', serif;
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .invitation-heading {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3em;
+        }
+        .date-time {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+            font-family: 'Ovo', serif;
+        }
+        .date-time div {
+            margin: 0 10px;
+        }
+        .date-number {
+            font-size: 4em;
+        }
+        @media (min-width: 768px) {
+            .main-content img {
+                width: 80%;
+                margin: 0 auto;
+                display: block;
+                -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+                mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="./img/header.png" alt="Header Image" class="image">
+    </div>
+    <div class="main-content">
+        <div class="invitation-text">YOU ARE INVITED TO</div>
+        <div class="invitation-text invitation-heading">Wedding Party</div>
+        <div class="invitation-text">Francois & Juliana</div>
+        <div class="invitation-text">JANUARY</div>
+        <div class="date-time">
+            <div>SUNDAY</div>
+            <div class="date-number">28</div>
+            <div>AT 10 PM</div>
+        </div>
+        <div class="invitation-text">123 Anywhere st., Any City, ST 12345</div>
+    </div>
+    <div class="footer">
+        <img src="./img/footer.png" alt="Footer Image" class="image">
+    </div>
+</body>
+</html>
